@@ -1,0 +1,74 @@
+{
+  "name": "compat-ui-cli",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "jmuc": "bin/index.js"
+  },
+  "scripts": {
+    "lint": "eslint . --fix --ext .js",
+    "version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hefeng1208/compat-ui-cli.git"
+  },
+  "author": "hefeng1208",
+  "keywords": [
+    "jelement",
+    "element-ui",
+    "jelement-ui",
+    "jelement-next"
+  ],
+  "license": "ISC",
+  "dependencies": {
+    "@babel/generator": "^7.14.5",
+    "@babel/parser": "^7.14.7",
+    "@babel/traverse": "^7.14.7",
+    "@babel/types": "^7.14.5",
+    "@vue/compiler-sfc": "^3.1.4",
+    "cac": "^6.7.3",
+    "camelcase": "^6.2.0",
+    "fast-glob": "^3.2.5",
+    "fs-extra": "^10.0.0",
+    "html-formatter": "^0.1.9",
+    "i": "^0.3.6",
+    "joycon": "^3.0.1",
+    "kebab-case": "^1.0.1",
+    "log-horizon": "^0.1.2"
+  },
+  "devDependencies": {
+    "conventional-changelog-cli": "^2.1.1",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^7.27.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-promise": "^5.1.0",
+    "eslint-plugin-standard": "^5.0.0",
+    "husky": "^6.0.0",
+    "jest": "^27.0.4",
+    "lint-staged": "^11.0.0",
+    "prettier": "^2.3.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js}": [
+      "eslint --fix --ext .js",
+      "git add"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
