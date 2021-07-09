@@ -16,8 +16,18 @@ async function codemod(config) {
     config.filePath = abs
     const source = await fs.readFile(abs, 'utf-8')
     try {
-      const { jsCode, templateCode } = parser(source, config)
-      await fs.writeFile(abs, `${templateCode}\r\n${jsCode}`, 'utf-8')
+      const { jsCode, templateCode, styleContent } = parser(source, config)
+      let renderFile = ''
+      if (templateCode) {
+        renderFile += `${templateCode}`
+      }
+      if (jsCode) {
+        renderFile += jsCode
+      }
+      if (styleContent) {
+        renderFile += styleContent
+      }
+      await fs.writeFile(__dirname + '/app.vue', `${renderFile}`, 'utf-8')
     } catch (e) {
       await fs.writeFile(abs, source, 'utf-8')
       logger.error(`The error occurred when processing: ${abs}`)
