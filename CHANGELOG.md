@@ -1,3 +1,7 @@
+## [0.1.3](https://github.com/hefeng1208/compat-ui-cli/compare/v0.1.2...v0.1.3) (2021-07-13)
+
+
+
 ## [0.1.2](https://github.com/hefeng1208/compat-ui-cli/compare/v0.1.1...v0.1.2) (2021-07-13)
 
 
