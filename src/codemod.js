@@ -1,4 +1,4 @@
-const { resolve, dirname, sep, basename } = require('path')
+const { resolve } = require('path')
 const fs = require('fs-extra')
 const fg = require('fast-glob')
 const { parser, logger } = require('../lib')
@@ -10,13 +10,12 @@ async function codemod(config) {
 
   exclude = exclude.concat('node_modules/**/*.vue')
   const files = await fg(include.concat(exclude.map((p) => `!${p}`)))
-
-  return files.map(async (p) => {
+  for (const p of files) {
     const abs = resolve(p)
     config.filePath = abs
     const source = await fs.readFile(abs, 'utf-8')
     try {
-      const { jsCode, templateCode, styleContent } = parser(source, config)
+      const { jsCode, templateCode, styleContent } = await parser(source, config)
       let renderFile = ''
       if (templateCode) {
         renderFile += `${templateCode}`
@@ -27,13 +26,13 @@ async function codemod(config) {
       if (styleContent) {
         renderFile += styleContent
       }
-      await fs.writeFile(__dirname + '/app.vue', `${renderFile}`, 'utf-8')
+      await fs.writeFile(abs, `${renderFile}`, 'utf-8')
     } catch (e) {
       await fs.writeFile(abs, source, 'utf-8')
       logger.error(`The error occurred when processing: ${abs}`)
       logger.error(e)
     }
-  })
+  }
 }
 
 module.exports = codemod
