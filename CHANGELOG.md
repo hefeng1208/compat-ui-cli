@@ -1,3 +1,12 @@
+## [0.1.2](https://github.com/hefeng1208/compat-ui-cli/compare/v0.1.1...v0.1.2) (2021-07-13)
+
+
+### Bug Fixes
+
+* 动态属性替换失败 ([dd0f296](https://github.com/hefeng1208/compat-ui-cli/commit/dd0f2962f65a14811377ad453d55719c8d82d3cb))
+
+
+
 ## [0.1.1](https://github.com/hefeng1208/compat-ui-cli/compare/v0.1.0...v0.1.1) (2021-07-13)
 
 
