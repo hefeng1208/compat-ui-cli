@@ -31,13 +31,14 @@
     "@vue/compiler-sfc": "^3.1.4",
     "cac": "^6.7.3",
     "camelcase": "^6.2.0",
+    "chalk": "^4.1.1",
     "fast-glob": "^3.2.5",
     "fs-extra": "^10.0.0",
-    "html-formatter": "^0.1.9",
-    "i": "^0.3.6",
     "joycon": "^3.0.1",
     "kebab-case": "^1.0.1",
-    "log-horizon": "^0.1.2"
+    "log-horizon": "^0.1.2",
+    "ora": "^5.4.1",
+    "shelljs": "^0.8.4"
   },
   "devDependencies": {
     "conventional-changelog-cli": "^2.1.1",
