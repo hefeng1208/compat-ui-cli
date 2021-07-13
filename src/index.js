@@ -28,6 +28,8 @@ async function getConfig(flags) {
     include: '**/*.vue',
     exclude: ['**/node_modules'],
     filePath: '',
+    autoESLint: true,
+    eslintConfigPath: './.eslintrc.js',
     prefix: {
       before: 'jc',
       after: 'el',
@@ -64,8 +66,9 @@ cli
       config.include = file
     }
     await codemod(config)
-
-    await lint()
+    if (config.autoESLint) {
+      await lint(config)
+    }
     logger.success('Generated successfully')
   })
 
@@ -74,15 +77,19 @@ cli.help()
 
 cli.parse()
 
-function lint() {
+function lint(options) {
   const arg = '. --fix --ext .js,.vue'
   spinner = ora('Start eslinting...').start()
 
   if (shell.which('eslint')) {
     const eslint = shell.which('eslint').stdout
-    shell.exec(`${eslint} . --fix --ext .js,.vue`)
+    shell.exec(`${eslint} . -c ${options.eslintConfigPath} --fix --ext .js,.vue`, function (code) {
+      if (code !== 0) {
+        spinner.succeed('ESLint Fail')
+      }
+    })
   } else {
     shell.exec(`npx eslint ${arg}`)
   }
-  spinner.succeed('Done')
+  spinner.succeed('ESLint Done')
 }
