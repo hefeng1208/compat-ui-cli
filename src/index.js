@@ -66,9 +66,7 @@ cli
       config.include = file
     }
     await codemod(config)
-    if (config.autoESLint) {
-      await lint(config)
-    }
+    await lint(config)
     logger.success('Generated successfully')
   })
 
@@ -78,18 +76,20 @@ cli.help()
 cli.parse()
 
 function lint(options) {
-  const arg = '. --fix --ext .js,.vue'
-  spinner = ora('Start eslinting...').start()
+  if (options.autoESLint) {
+    const arg = `. --fix -c ${options.eslintConfigPath} --ext .js,.vue`
+    spinner = ora('Start ESLinting...').start()
 
-  if (shell.which('eslint')) {
-    const eslint = shell.which('eslint').stdout
-    shell.exec(`${eslint} . -c ${options.eslintConfigPath} --fix --ext .js,.vue`, function (code) {
-      if (code !== 0) {
-        spinner.succeed('ESLint Fail')
+    if (shell.which('eslint')) {
+      const eslint = shell.which('eslint').stdout
+      const eslintResult = shell.exec(`${eslint} ${arg}`)
+      if (eslintResult.code !== 0) {
+        spinner.fail('ESLint Fail')
+      } else {
+        spinner.succeed('ESLint Successful')
       }
-    })
-  } else {
-    shell.exec(`npx eslint ${arg}`)
+    } else {
+      shell.exec(`npx eslint ${arg}`)
+    }
   }
-  spinner.succeed('ESLint Done')
 }
