@@ -66,7 +66,7 @@ cli
       config.include = file
     }
     await codemod(config)
-    await lint(config)
+    // await lint(config)
     logger.success('Generated successfully')
   })
 
