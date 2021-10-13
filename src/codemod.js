@@ -15,7 +15,7 @@ async function codemod(config) {
     config.filePath = abs
     const source = await fs.readFile(abs, 'utf-8')
     try {
-      const { jsCode, templateCode, styleContent } = await parser(source, config)
+      const { jsCode, templateCode, styleContent, customBlock } = await parser(source, config)
       let renderFile = ''
       if (templateCode) {
         renderFile += `${templateCode}`
@@ -25,6 +25,9 @@ async function codemod(config) {
       }
       if (styleContent) {
         renderFile += styleContent
+      }
+      if (customBlock) {
+        renderFile += customBlock
       }
       await fs.writeFile(abs, `${renderFile}`, 'utf-8')
     } catch (e) {

@@ -1,6 +1,7 @@
 <template>
   <div>
-    <slot :currentVpc="currentVpc"><el-input v-model="input" placeholder="请输入内容" @click="test"></el-input>
+      <!-- customBlockcustomBlockcustomBlock -->
+    <slot :currentVpc="currentVpc"><el-input v-model="input" placeholder="请输入内容" @click="bbb"></el-input>
 <el-dialog title="提示" :visible.sync="dialogVisible" width="30%" :before-close="handleClose">
   <span>这是一段信息</span>
 
@@ -12,12 +13,9 @@
   </span>
 
 </el-dialog>
-<el-select v-model="currentVpc" v-loading="loading" v-select-loadmore="loadMore" :disabled="disableVpc" :placeholder="$t('choiceVPC')" class="w-5/12" value-key="vpcId"><el-option v-for="item in vpcList" :key="item.vpcId" :label="item.vpcName" :disabled="item.disabled" :value="item" />
-</el-select>
-<el-select v-model="currentSubnet" v-loading="loading" :placeholder="$t('choiceSubNet')" class="w-5/12" value-key="subnetId"><el-option v-for="item in currentVpc.subnets || []" :key="item.subnetId" :label="item.subnetName" :disabled="item.disabled" :value="item" />
-</el-select>
-<i class="jc-icon-my-refresh w-1/12 cursor-pointer" @click="getVpcList(true)" />
-</slot>
+<el-select v-model="currentVpc" v-loading="loading" v-select-loadmore="loadMore" :disabled="disableVpc" :placeholder="$t('choiceVPC')" class="w-5/12" value-key="vpcId"><el-option v-for="item in vpcList" :key="item.vpcId" :label="item.vpcName" :disabled="item.disabled" :value="item" /></el-select>
+<el-select v-model="currentSubnet" v-loading="loading" :placeholder="$t('choiceSubNet')" class="w-5/12" value-key="subnetId"><el-option v-for="item in currentVpc.subnets || []" :key="item.subnetId" :label="item.subnetName" :disabled="item.disabled" :value="item" /></el-select>
+<i class="jc-icon-my-refresh w-1/12 cursor-pointer" @click="getVpcList(true)" /></slot>
 
     <slot :currentSubnet="currentSubnet" name="info">
       <i18n v-show="availableIp" path="remainUsableSubNet" tag="p" class="new-tips">
@@ -173,3 +171,20 @@ export default {
 
 };
 </script>
+
+<i18n locale="cn" lang="yaml">
+choiceVPC:  请选择私有网络
+choiceSubNet: '请选择子网络'
+remainUsableSubNet: '当前子网剩余 {number} 个可用IP'
+createVPC: '新建私有网络'
+createSubNet: '新建子网'
+noUsableSubNet: '当前可用子网数量不足，请更换其他子网或网络创建资源。'
+</i18n>
+<i18n locale="en" lang="yaml">
+choiceVPC: 'Please select VPC'
+choiceSubNet: '请选择子网络'
+remainUsableSubNet: '当前子网剩余 {number} 个可用IP'
+createVPC: '新建私有网络'
+createSubNet: '新建子网'
+noUsableSubNet: '当前可用子网数量不足，请更换其他子网或网络创建资源。'
+</i18n>
