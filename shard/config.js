@@ -1,5 +1,9 @@
 const compatibleComponentMap = {
-  Badge: {},
+  Badge: {
+    deprecatedPropValue: {
+      type: 'info',
+    },
+  },
   Pagination: {},
   Popover: {},
   Tooltip: {},
@@ -11,7 +15,7 @@ const compatibleComponentMap = {
     // 只能删除属性，属性值只能替换
     deleteProps: [],
     // 废弃的属性
-    deprecatedProps: ['plain'],
+    deprecatedProps: ['plain', 'round', 'circle'],
     // 废弃的属性值,当没有替换的属性值时候使用此属性
     deprecatedPropValue: {
       type: ['success', 'warning', 'info'],
@@ -42,13 +46,20 @@ const compatibleComponentMap = {
     },
     replacedPropName: {
       icon: 'prefix-icon',
+      'radial-counter': 'show-word-limit',
     },
     deprecatedProps: ['on-icon-click', 'radial-counter', 'click', 'auto-complete'],
   },
   Tag: {
-    deleteProps: ['hit'],
+    deleteProps: ['hit', 'effect'],
     deprecatedPropValue: {
       type: ['gray'],
+      size: ['medium'],
+    },
+    replacedPropValue: {
+      size: {
+        mini: 'small',
+      },
     },
   },
   Switch: {
@@ -73,25 +84,51 @@ const compatibleComponentMap = {
   },
   Slider: {
     deleteProps: ['vertical'],
+    replacedPropValue: {
+      'input-size': {
+        large: 'medium',
+        mini: 'small',
+      },
+    },
   },
   Form: {
     // 需要替换的属性
-    deprecatedProps: ['label-suffix'],
+    deprecatedProps: ['label-suffix', 'size', 'status-icon'],
   },
   Table: {
     deleteProps: ['stripe', 'border'],
     replacedPropName: {
       expand: 'expand-change',
     },
+    deprecatedPropValue: {
+      size: 'mini',
+    },
+  },
+  TableColumn: {
+    deleteProps: ['filter-by-hover'],
   },
   Alert: {
     deprecatedProps: ['description'],
   },
-  Dialog: {},
+  Dialog: {
+    replacedPropName: {
+      size: 'width',
+    },
+    replacedPropValue: {
+      size: {
+        tiny: '30%',
+        small: '50%',
+        large: '90%',
+        full: '100%',
+      },
+    },
+  },
   CollapseTransition: {},
   Loading: {},
   Autocomplete: {},
-  Dropdown: {},
+  Dropdown: {
+    deprecatedProps: ['split-button', 'type', 'click'],
+  },
   DropdownMenu: {},
   DropdownItem: {},
   Menu: {},
@@ -105,15 +142,25 @@ const compatibleComponentMap = {
   Option: {},
   OptionGroup: {},
   ButtonGroup: {},
-  TableColumn: {},
-  DatePicker: {},
+  DatePicker: {
+    deleteProps: ['size'],
+  },
   TimeSelect: {},
-  TimePicker: {},
+  TimePicker: {
+    deleteProps: ['size'],
+  },
+  DateTimePicker: {
+    deleteProps: ['size'],
+  },
   MessageBox: {},
   Breadcrumb: {},
   BreadcrumbItem: {},
   FormItem: {},
-  Tabs: {},
+  Tabs: {
+    deprecatedPropValue: {
+      type: 'border-card',
+    },
+  },
   TabPane: {},
   Tree: {},
   Notification: {},
@@ -121,7 +168,9 @@ const compatibleComponentMap = {
   Row: {},
   Col: {},
   Upload: {},
-  Progress: {},
+  Progress: {
+    deleteProps: ['stroke-width', 'text-inside'],
+  },
   Spinner: {},
   Message: {},
   Card: {},
