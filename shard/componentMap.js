@@ -17,6 +17,7 @@ for (const component in compatibleComponentMap) {
     if (Object.keys(customComponentConfig).length) {
       componentConfig = customComponentConfig
     }
+
     return parseResult(propAst, source, component, componentConfig[component], options)
   }
 }

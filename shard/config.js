@@ -93,7 +93,7 @@ const compatibleComponentMap = {
   },
   Form: {
     // 需要替换的属性
-    deprecatedProps: ['label-suffix', 'size', 'status-icon'],
+    deprecatedProps: ['size', 'status-icon'],
   },
   Table: {
     deleteProps: ['stripe', 'border'],
@@ -126,15 +126,15 @@ const compatibleComponentMap = {
   CollapseTransition: {},
   Loading: {},
   Autocomplete: {},
+  DropdownMenu: {},
+  DropdownItem: {},
   Dropdown: {
     deprecatedProps: ['split-button', 'type', 'click'],
   },
-  DropdownMenu: {},
-  DropdownItem: {},
-  Menu: {},
-  Submenu: {},
   MenuItem: {},
   MenuItemGroup: {},
+  Menu: {},
+  Submenu: {},
   RadioGroup: {},
   RadioButton: {},
   CheckboxButton: {},
