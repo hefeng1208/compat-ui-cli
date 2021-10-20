@@ -70,11 +70,13 @@ function repairTips(filePath, component, propName, content, replacedContent, pos
       logger.warn(`${positionTip}\t${component}组件的属性 ${propName} 已删除${wrap}`)
       break
     case 'deprecatedProps':
-      logger.warn(`${positionTip}\t${component}组件的 ${propName} 属性已废弃,请替换为合适值${wrap}`)
+      logger.error(
+        `Todo:${positionTip}\t${component}组件的 ${propName} 属性已废弃,请替换为合适值${wrap}`
+      )
       break
     case 'deprecatedPropValue':
-      logger.warn(
-        `${positionTip}\t${component}组件的 ${propName} 属性的 ${content} 属性值已废弃${wrap}`
+      logger.error(
+        `Todo:${positionTip}\t${component}组件的 ${propName} 属性的 ${content} 属性值已废弃${wrap}`
       )
       break
     case 'replacedPropName':
