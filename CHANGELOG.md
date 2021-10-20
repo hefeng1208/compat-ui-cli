@@ -1,3 +1,14 @@
+## [0.1.5](https://github.com/hefeng1208/compat-ui-cli/compare/v0.1.3...v0.1.5) (2021-10-20)
+
+
+### Features
+
+* **config:** 更新配置 ([6ffd4ee](https://github.com/hefeng1208/compat-ui-cli/commit/6ffd4ee9b3578b50035735729bd5dd83a890ca8f))
+* **custom:** 支持customblocks ([a3cf141](https://github.com/hefeng1208/compat-ui-cli/commit/a3cf1412eac438b1fcaaf1bff677f63f5631ee02))
+* **修改提示&fix delete props:** 修改提示&fix delete props ([ce6c7de](https://github.com/hefeng1208/compat-ui-cli/commit/ce6c7de583e624746abe309dd9a87f945360a119))
+
+
+
 ## [0.1.3](https://github.com/hefeng1208/compat-ui-cli/compare/v0.1.2...v0.1.3) (2021-07-13)
 
 
